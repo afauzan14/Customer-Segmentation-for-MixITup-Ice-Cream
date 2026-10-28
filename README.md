@@ -1,4 +1,4 @@
-# 🍦 Customer Segmentation for MixITup Ice Cream using K-Prototypes Clustering
+# Customer Segmentation for MixITup Ice Cream using K-Prototypes Clustering
 ### Unsupervised Machine Learning on Mixed Data Types (Numerical & Categorical) for Data-Driven F&B Marketing Strategies
 
 [![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white)](https://www.python.org/)
@@ -9,7 +9,7 @@
 
 ---
 
-## 📌 Project Overview & Business Understanding
+## Project Overview & Business Understanding
 
 **MixITup** is a rapidly scaling Food & Beverage (F&B) startup specializing in artisanal ice cream, boba drinks, and specialty desserts. Currently operating across high-density urban hubs in **Jakarta, Depok, and Tangerang**, the brand experiences substantial foot traffic across both dine-in and online delivery channels.
 
@@ -19,7 +19,7 @@ This project implements **K-Prototypes Clustering**, an advanced unsupervised ma
 
 ---
 
-## 🎯 Analytical Objectives
+## Analytical Objectives
 
 1. **Uncover Demographic & Transactional Behaviors:** Analyze multidimensional customer profiles, income distributions, and spending tendencies across retail locations.
 2. **Build Meaningful Customer Personas:** Derive statistically robust and business-actionable customer tiers.
@@ -27,7 +27,7 @@ This project implements **K-Prototypes Clustering**, an advanced unsupervised ma
 
 ---
 
-## 🔬 K-Prototypes Modeling & Optimal Cluster Selection
+## K-Prototypes Modeling & Optimal Cluster Selection
 
 Standard clustering algorithms (e.g., K-Means or K-Modes) are inherently constrained to either purely continuous or purely discrete variables. **K-Prototypes** integrates *Euclidean distance* for numerical dimensions (`age`, `income`, `spending_score`) with a *simple matching dissimilarity metric* weighted by $\gamma$ for categorical dimensions (`gender`, `marital_status`, `city`, `promo_usage`, `day_of_purchase`, `flavor_preference`).
 
@@ -38,7 +38,7 @@ Standard clustering algorithms (e.g., K-Means or K-Modes) are inherently constra
 
 ---
 
-## 🏆 Customer Cluster Profiles (Personas)
+## Customer Cluster Profiles (Personas)
 
 | Customer Tier | Cluster ID | Dominant Region | Financial & Spending Profile | Purchasing Pattern | Preferred Flavor |
 | :--- | :---: | :---: | :--- | :--- | :---: |
@@ -49,7 +49,7 @@ Standard clustering algorithms (e.g., K-Means or K-Modes) are inherently constra
 
 ---
 
-## 💡 Actionable Business & Marketing Strategies
+## Actionable Business & Marketing Strategies
 
 ### 🥉 1. Bronze Tier (Tangerang — Price Sensitive & Deal Seekers)
 * **Off-Peak Value Bundles:** Launch *"Sweet Monday"* bundled promotions combining Chocolate ice cream with secondary items to stimulate foot traffic early in the week.
