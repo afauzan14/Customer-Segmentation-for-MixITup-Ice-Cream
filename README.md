@@ -1,71 +1,68 @@
 # 🍦 Customer Segmentation for MixITup Ice Cream using K-Prototypes Clustering
-### Data Mining & Unsupervised Learning on Mixed Data Types (Numerical & Categorical)
+### Unsupervised Machine Learning on Mixed Data Types (Numerical & Categorical) for Data-Driven F&B Marketing Strategies
 
-[![Python](https://img.shields.io/badge/Python-3.8%2B-blue?logo=python&logoColor=white)](https://www.python.org/)
+[![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![Jupyter Notebook](https://img.shields.io/badge/Notebook-Jupyter-orange?logo=jupyter&logoColor=white)](Kelompok_C_Study_Case_02.ipynb)
-[![Dataset](https://img.shields.io/badge/Dataset-MixITup%20CSV-green)](Case-Study-02-MixITup.csv)
+[![Dataset](https://img.shields.io/badge/Dataset-MixITup%20Transactions-green)](Case-Study-02-MixITup.csv)
 [![Algorithm](https://img.shields.io/badge/Algorithm-K--Prototypes-red)]()
+[![Domain](https://img.shields.io/badge/Domain-F%26B%20Retail%20Analytics-purple)]()
 
 ---
 
-## 📌 Ringkasan Proyek (Business Understanding)
+## 📌 Project Overview & Business Understanding
 
-**MixITup** adalah perusahaan rintisan (*startup*) anak muda yang bergerak di industri *Food & Beverage* (Ice Cream, Boba Drinks, dan Desserts/Snacks). Saat ini, MixITup telah memiliki 3 cabang utama di **Jakarta, Depok, dan Tangerang** dengan antrean *dine-in* maupun *delivery* yang tinggi.
+**MixITup** is a rapidly scaling Food & Beverage (F&B) startup specializing in artisanal ice cream, boba drinks, and specialty desserts. Currently operating across high-density urban hubs in **Jakarta, Depok, and Tangerang**, the brand experiences substantial foot traffic across both dine-in and online delivery channels.
 
-Setelah memperoleh suntikan pendanaan **Seri B sebesar Rp 33 Miliar**, MixITup bersiap melakukan ekspansi gerai ke kota-kota baru dan kampanye pemasaran berskala besar (*massive marketing*). Agar alokasi anggaran promosi tepat sasaran, perusahaan memerlukan **segmentasi pelanggan berbasis data** untuk memahami perilaku, demografi, dan preferensi belanja konsumen secara terukur.
+Following a successful **Series B funding round of Rp 33 Billion**, MixITup is preparing for multi-city retail expansion and large-scale marketing blitzes. To ensure optimal return on marketing spend (ROAS) and prevent customer churn, executive leadership requires an empirical, data-driven customer segmentation framework to identify behavioral patterns, purchasing habits, and regional flavor preferences.
 
-Proyek ini menerapkan metode **Unsupervised Machine Learning: K-Prototypes Clustering**, sebuah pendekatan klastering tingkat lanjut yang mampu mengolah fitur **numerik dan kategorik secara simultan** tanpa menghilangkan karakteristik alami data.
-
----
-
-## 🎯 Tujuan Analisis
-
-1. Mengidentifikasi pola demografi dan perilaku transaksi pelanggan gerai MixITup.
-2. Membentuk klaster pelanggan yang homogen dan bermakna (*meaningful customer tiers*).
-3. Merumuskan rekomendasi strategi bisnis, operasional, dan kampanye promosi yang terpersonalisasi untuk tiap segmen.
+This project implements **K-Prototypes Clustering**, an advanced unsupervised machine learning algorithm designed to natively partition **mixed data types (numerical and categorical attributes simultaneously)** without arbitrary feature transformations.
 
 ---
 
-## 🔬 Pemodelan K-Prototypes & Penentuan Cluster Optimal
+## 🎯 Analytical Objectives
 
-Algoritma **K-Prototypes** dipilih karena menggabungkan jarak *Euclidean* untuk fitur numerik (`umur`, `gaji`, `skor`) dan *matching dissimilarity* untuk fitur kategorik (`sex`, `menikah`, `kota`, `promo`, `hari`, `rasa`).
-
-### Penentuan Nilai $k$ (Elbow Method)
-Eksperimen pengujian nilai $k \in [1, 9]$ menggunakan kurva nilai *Cost*:
-- Terjadi patahan sudut (*elbow point*) yang signifikan pada $k = 4$.
-- Nilai **$k = 4$** dipilih sebagai jumlah klaster paling optimal dan representatif untuk kebutuhan segmentasi bisnis.
+1. **Uncover Demographic & Transactional Behaviors:** Analyze multidimensional customer profiles, income distributions, and spending tendencies across retail locations.
+2. **Build Meaningful Customer Personas:** Derive statistically robust and business-actionable customer tiers.
+3. **Formulate Tailored Marketing Strategies:** Design targeted promotions, operational workflows, and loyalty retention programs customized for each specific cluster.
 
 ---
 
-## 🏆 Profil 4 Segmen Pelanggan (Customer Clusters)
+## 🔬 K-Prototypes Modeling & Optimal Cluster Selection
 
-| Segmen | Cluster | Wilayah Dominan | Karakteristik Belanja & Finansial | Pola Transaksi | Varian Rasa Favorit |
+Standard clustering algorithms (e.g., K-Means or K-Modes) are inherently constrained to either purely continuous or purely discrete variables. **K-Prototypes** integrates *Euclidean distance* for numerical dimensions (`age`, `income`, `spending_score`) with a *simple matching dissimilarity metric* weighted by $\gamma$ for categorical dimensions (`gender`, `marital_status`, `city`, `promo_usage`, `day_of_purchase`, `flavor_preference`).
+
+### Optimal Cluster Evaluation ($k$ Selection)
+* Evaluated cost function variations across cluster sizes $k \in [1, 9]$ using the **Elbow Method**.
+* A distinct inflection point (*elbow knee*) emerged at **$k = 4$**.
+* Selected **$k = 4$** as the optimal configuration, achieving maximum intra-cluster cohesion and clear separation across customer spending tiers.
+
+---
+
+## 🏆 Customer Cluster Profiles (Personas)
+
+| Customer Tier | Cluster ID | Dominant Region | Financial & Spending Profile | Purchasing Pattern | Preferred Flavor |
 | :--- | :---: | :---: | :--- | :--- | :---: |
-| **Bronze** 🥉 | Cluster 0 | **Tangerang** | Gaji rendah–menengah, skor pengeluaran rendah. Sangat sensitif harga. | Sering mencari & menggunakan promo; hari favorit: **Senin**. | Coklat |
-| **Silver** 🥈 | Cluster 2 | **Jakarta** | Gaji menengah ke atas, pengeluaran moderat. Jarang menggunakan promo. | Transaksi terpusat di akhir pekan (hari favorit: **Sabtu**). | Blueberry |
-| **Gold** 🥇 | Cluster 1 | **Jakarta** | Pendapatan tinggi, skor pengeluaran tinggi. Pembeli rutin bernilai tinggi. | Jarang memakai promo; hari favorit belanja: **Senin**. | Vanila |
-| **Platinum** 💎 | Cluster 3 | **Depok** | Pendapatan moderat–tinggi, skor pengeluaran tertinggi. Konsumen paling loyal. | Jarang memakai promo; hari favorit belanja: **Senin**. | Vanila |
+| **Bronze** 🥉 | Cluster 0 | **Tangerang** | Lower-to-middle income, lower spending score. Highly price-sensitive. | Highly responsive to promotions; peak buying day: **Monday**. | Chocolate |
+| **Silver** 🥈 | Cluster 2 | **Jakarta** | Upper-middle income, moderate spending score. Rarely utilizes discounts. | Weekend-centric transactions; peak buying day: **Saturday**. | Blueberry |
+| **Gold** 🥇 | Cluster 1 | **Jakarta** | High income, high spending score. High-frequency premium buyers. | Low promo sensitivity; peak buying day: **Monday**. | Vanilla |
+| **Platinum** 💎 | Cluster 3 | **Depok** | Moderate-to-high income, highest spending score. Core brand champions. | Organic buyers; peak buying day: **Monday**. | Vanilla |
 
 ---
 
-## 💡 Rekomendasi Strategi Bisnis (Actionable Insights)
+## 💡 Actionable Business & Marketing Strategies
 
-### 🥉 1. Bronze Cluster (Tangerang - Price Sensitive)
-- **Promo Berbasis Hari Sepi:** Tawarkan paket *"Senin Manis"* atau diskon bundling varian Coklat untuk menarik kunjungan di awal pekan.
-- **Kartu Loyalty Bertingkat:** Rancang program *loyalty stamp* untuk mendorong frekuensi belanja pelanggan agar naik ke tier berikutnya.
+### 🥉 1. Bronze Tier (Tangerang — Price Sensitive & Deal Seekers)
+* **Off-Peak Value Bundles:** Launch *"Sweet Monday"* bundled promotions combining Chocolate ice cream with secondary items to stimulate foot traffic early in the week.
+* **Tiered Stamp Loyalty Program:** Implement a digital loyalty stamp card rewarding repeat purchases, encouraging progression toward higher spending tiers.
 
-### 🥈 2. Silver Cluster (Jakarta - Weekend Socializer)
-- **Optimasi Jam Operasional Akhir Pekan:** Perpanjang jam operasional toko pada hari Sabtu dan sediakan area *dine-in* yang nyaman untuk nongkrong.
-- **Lokasi Strategis & Promosi Digital:** Pasang iklan targeted di area komersial Jakarta (pusat perkantoran, kampus, dan mall).
+### 🥈 2. Silver Tier (Jakarta — Weekend Socializers)
+* **Weekend Operational Optimization:** Extend dine-in store hours and optimize seating layouts on Saturdays to capture social groups and leisure diners.
+* **Geo-Targeted Digital Campaigns:** Focus programmatic social media advertisements around commercial office districts, universities, and lifestyle centers in Jakarta.
 
-### 🥇 3. Gold Cluster (Jakarta - Premium Spender)
-- **Menu Eksklusif & Inovasi Produk:** Tawarkan menu edisi terbatas (*seasonal/premium flavor*) varian Vanila atau topping boba eksklusif.
-- **Manajemen Antrean & Pelayanan Cepat:** Atur alokasi barista pada hari Senin guna mempertahankan kepuasan pelanggan bernilai tinggi.
+### 🥇 3. Gold Tier (Jakarta — Premium High-Spenders)
+* **Exclusive Flavor Innovations:** Introduce limited-time artisanal offerings (e.g., premium seasonal blends, gourmet toppings) to satisfy desire for exclusivity.
+* **Barista Workforce Allocation:** Optimize staff scheduling and fast-service lines on Mondays to ensure seamless service for high-value routine customers.
 
-### 💎 4. Platinum Cluster (Depok - Top Loyal Customer)
-- **VIP Treatment & Priority Line:** Berikan jalur antrean khusus (*fast-track*) atau program keanggotaan VIP untuk pelanggan setia Depok.
-- **Personalized Rewards:** Berikan kejutan apresiasi gratis di hari ulang tahun atau reward khusus tanpa harus menunggu promo umum.
-
----
-
-*Proyek ini dikembangkan untuk studi kasus data mining dan segmentasi pelanggan F&B.*
+### 💎 4. Platinum Tier (Depok — Top Brand Champions)
+* **VIP Priority Access:** Establish an exclusive VIP fast-track queue for loyal regulars, minimizing wait times during peak rush hours.
+* **Surprise & Delight Rewards:** Deliver personalized loyalty tokens, complimentary birthday treats, and secret menu invitations without relying on generic discount coupons.
